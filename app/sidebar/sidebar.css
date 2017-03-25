@@ -1,4 +1,4 @@
-.sidenav {
+.sidebar {
     height: 100%;
     width: 250px;
     position: fixed;
@@ -9,5 +9,11 @@
     box-shadow: 10px 10px 30px #888888;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 0px;
+}
+.sidebar a {
+    margin-left: 0px;
+    display: block;
+    width: 100%;
+    padding-bottom: 20px;
 }
