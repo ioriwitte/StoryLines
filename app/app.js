@@ -19,27 +19,27 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider
     .when("/login", {
       templateUrl: "login/login.html",
-      controller: "loginController"
+      controller: "LoginController"
     })
     .when("/myTasks", {
       templateUrl: "my-tasks/my-tasks.html",
-      controller: "myTasksController"
+      controller: "MyTasksController"
     })
     .when("/plannerHub", {
       templateUrl: "planner-hub/planner-hub.html",
-      controller: "plannerHubController"
+      controller: "PlannerHubController"
     })
     .when("/projectPage", {
       templateUrl: "project-page/project-page.html",
-      controller: "projectPageController"
+      controller: "ProjectPageController"
     })
     .when("/storiesStatus", {
       templateUrl: "stories-status/stories-status.html",
-      controller: "storiesStatusController"
+      controller: "StoriesStatusController"
     })
     .when("/userScreen", {
       templateUrl: "user-screen/user-screen.html",
-      controller: "userScreenController"
+      controller: "UserScreenController"
     })
     .otherwise({redirectTo: '/view1'});
 }]);

@@ -3,6 +3,7 @@
  */
 
 angular.module('myApp.login', [])
-  .controller('loginController', function ($scope) {
+  .controller('LoginController', function ($scope) {
+
 
   });
