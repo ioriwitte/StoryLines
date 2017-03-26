@@ -12,11 +12,11 @@ angular.module('myApp.myTasks', [])
     //TODO: Wait for data to load in model
     Model.loadData(function () {
       $scope.boards = Model.getBoards();
-      console.log($scope.boards);
+      /*
       $scope.cards = function (boardId) {
         return Model.getCards(boardId).slice(0,5);
       };
-
+*/
       //TODO: Figure out why this is needed for it to work
       $scope.$apply();
 

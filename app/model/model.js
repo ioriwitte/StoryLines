@@ -9,7 +9,7 @@ app.factory('Model', function ($resource) {
   var cardsLoaded = false;
   var boards;
   var cards;
-
+  var loadingCounter = 0;
   //Authorize to the trello api
   this.authorize = function() {
 
@@ -38,7 +38,11 @@ app.factory('Model', function ($resource) {
       boards = data;
       //cb(boards);
       boardsLoaded = true;
-      loadAllCards(cb);
+      for(var i = 0; i < boards.length; i++){
+        loadCards(i, cb);
+      }
+      //loadAllCards(cb);
+      //loadCards(cd);
       //console.log(data);
     };
     var error = function(errorMsg) {
@@ -48,6 +52,24 @@ app.factory('Model', function ($resource) {
 
   };
 
+  var loadCards = function (boardIndex, cb) {
+    // Get all of the information about the boards you have access to
+    var boardId = boards[boardIndex].id;
+
+    var success = function(data) {
+      boards[boardIndex].cards = data;
+      //Call the callback when all the boards has got their cards
+      if(++loadingCounter >= boards.length){
+        cb();
+      }
+    };
+    var error = function(errorMsg) {
+      console.log(errorMsg);
+    };
+    Trello.get('/boards/' + boardId + '/cards', success, error);
+
+  }
+
   var loadAllCards = function(cb){
 
     // Get all of the information about the boards you have access to
@@ -55,7 +77,6 @@ app.factory('Model', function ($resource) {
       cards = data;
       cardsLoaded = true;
       cb();
-      console.log(data);
     };
     var error = function(errorMsg) {
       console.log(errorMsg);
