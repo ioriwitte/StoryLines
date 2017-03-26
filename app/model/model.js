@@ -7,6 +7,8 @@ app.factory('Model', function ($resource) {
   var authenticationSuccess = function() { console.log('Successful authentication'); };
   var authenticationFailure = function() { console.log('Failed authentication'); };
 
+  var boards;
+
   this.authorize = function() {
 
     Trello.authorize({
@@ -20,19 +22,30 @@ app.factory('Model', function ($resource) {
       error: authenticationFailure
     });
 
+    loadBoards();
+  };
+
+  var loadBoards = function () {
 
     // Get all of the information about the boards you have access to
-
-    var success = function(successMsg) {
-      console.log(successMsg);
+    var success = function(data) {
+      boards = data;
+      console.log(data);
     };
-
     var error = function(errorMsg) {
       console.log(errorMsg);
     };
-
     Trello.get('/member/me/boards', success, error);
 
+  }
+
+  this.getBoards = function () {
+    if(boards == undefined){
+      console.error("Error: Boards not loaded yet");
+      return [];
+    }else{
+      return boards;
+    }
   };
 
   return this;
