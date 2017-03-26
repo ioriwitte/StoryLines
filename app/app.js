@@ -1,8 +1,9 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+var app = angular.module('myApp', [
   'ngRoute',
+  'ngResource',
   'myApp.login',
   'myApp.sidebar',
   'myApp.myTasks',
