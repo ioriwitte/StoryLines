@@ -56,6 +56,9 @@ app.factory('Model', function ($resource) {
     }
   };
 
+  this.getCards = function (boardId, cb) {
+    
+  }
   this.isLoggedIn = function () {
     return loggedIn;
   };
