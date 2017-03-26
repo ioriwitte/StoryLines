@@ -20,7 +20,8 @@
 }
 .sidebar a {
     margin-left: 0px;
-    display: block;
+    /* This will mess upp padding in New Project */
+    /*display: block;*/
     width: 100%;
     /*padding-bottom: 0px;*/
 }
