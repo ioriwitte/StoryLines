@@ -5,5 +5,4 @@
 angular.module('myApp.login', [])
   .controller('LoginController', function ($scope) {
 
-
   });

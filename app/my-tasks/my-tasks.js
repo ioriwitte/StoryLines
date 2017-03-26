@@ -4,4 +4,15 @@
 angular.module('myApp.myTasks', [])
   .controller('MyTasksController', function ($scope) {
 
+    $scope.projectList = [
+      {
+        name : "Project1",
+        cards : [
+          {
+
+          }
+        ]
+      }
+    ]
+
   });
