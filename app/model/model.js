@@ -3,7 +3,9 @@
  */
 
 app.factory('Model', function ($resource) {
+
   var loggedIn = false;
+  var boardsLoaded = false;
   var boards;
 
   //Authorize to the trello api
@@ -26,15 +28,17 @@ app.factory('Model', function ($resource) {
       error: authenticationFailure
     });
 
-    loadBoards();
+    //loadBoards();
   };
   //TODO: Assign "boards" variable by callback function
-  var loadBoards = function () {
+  var loadBoards = function (cb) {
 
     // Get all of the information about the boards you have access to
     var success = function(data) {
       boards = data;
-      console.log(data);
+      cb(boards);
+      boardsLoaded = true;
+      //console.log(data);
     };
     var error = function(errorMsg) {
       console.log(errorMsg);
@@ -44,16 +48,20 @@ app.factory('Model', function ($resource) {
   };
 
   this.getBoards = function (cb) {
-    if(boards == undefined){
-      console.error("Error: Boards not loaded yet");
-      return [];
+    //Check if boards are not loaded
+    if(!boardsLoaded){
+      loadBoards(cb);
     }else{
-      return boards;
+      cb(boards);
     }
   };
 
   this.isLoggedIn = function () {
     return loggedIn;
+  };
+
+  this.boardsLoaded = function () {
+    return boardsLoaded;
   };
 
   return this;
