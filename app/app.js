@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.login',
+  'myApp.sidebar',
   'myApp.myTasks',
   'myApp.plannerHub',
   'myApp.projectPage',
