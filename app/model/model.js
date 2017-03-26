@@ -36,8 +36,9 @@ app.factory('Model', function ($resource) {
     // Get all of the information about the boards you have access to
     var success = function(data) {
       boards = data;
-      cb(boards);
+      //cb(boards);
       boardsLoaded = true;
+      loadAllCards(cb);
       //console.log(data);
     };
     var error = function(errorMsg) {
@@ -47,14 +48,14 @@ app.factory('Model', function ($resource) {
 
   };
 
-  var loadAllCards = function(){
+  var loadAllCards = function(cb){
 
     // Get all of the information about the boards you have access to
     var success = function(data) {
       cards = data;
-      cb(cards);
       cardsLoaded = true;
-      //console.log(data);
+      cb();
+      console.log(data);
     };
     var error = function(errorMsg) {
       console.log(errorMsg);
@@ -63,18 +64,31 @@ app.factory('Model', function ($resource) {
 
   };
 
-  this.getBoards = function (cb) {
+  this.loadData = function (cb) {
+    loadBoards(cb);
+  }
+
+  this.getBoards = function () {
     //Check if boards are not loaded
     if(!boardsLoaded){
-      loadBoards(cb);
+      console.error("Boards not loaded");
+      //loadBoards(cb);
     }else{
-      cb(boards);
+      return boards;
     }
   };
 
-
-  this.getCards = function (boardId, cb) {
-
+  //Returns the cards from the board with "boardId"
+  this.getCards = function (boardId) {
+    if(!cardsLoaded){
+      console.error("Cards not loaded");
+      //loadBoards(cb);
+    }else{
+      //Return only the cards that belongs to the board with "boardId"
+      return cards.filter(function (card) {
+        return card.idBoard === boardId;
+      });
+    }
   };
 
   this.isLoggedIn = function () {
