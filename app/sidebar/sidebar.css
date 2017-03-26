@@ -1,6 +1,6 @@
 .sidebar {
     height: 100%;
-    width: 250px;
+    width: 220px;
     position: fixed;
     /* Give the sidebar flexbox properties*/
     display: flex;
@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     background-color: #cccccc;
-    box-shadow: 10px 10px 30px #888888;
+    box-shadow: 2px 0px 10px #888888;
     overflow-x: hidden;
     overflow-y: hidden;
     transition: 0.5s;
