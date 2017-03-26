@@ -2,25 +2,33 @@
     height: 100%;
     width: 250px;
     position: fixed;
+    /* Give the sidebar flexbox properties*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #cccccc;
     box-shadow: 10px 10px 30px #888888;
     overflow-x: hidden;
+    overflow-y: hidden;
     transition: 0.5s;
     padding-top: 0px;
+    padding-bottom: 10px;
 }
 .sidebar a {
     margin-left: 0px;
     display: block;
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 .sidebar#profile-pic{
     margin-left: 20px;
 }
 .sidebar#profile{
     position: absolute;
-    bottom: 0px;
+    margin-bottom: 10px;
+    /*bottom: 50px;*/
 }
