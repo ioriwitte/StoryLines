@@ -6,15 +6,11 @@ app.factory('Model', function ($resource) {
 
   var loggedIn = false;
   var boardsLoaded = false;
+  var cardsLoaded = false;
   var boards;
+  var cards;
 
   //Authorize to the trello api
-  var authenticationSuccess = function() {
-    console.log('Successful authentication');
-    loggedIn = true;
-  };
-  var authenticationFailure = function() { console.log('Failed authentication'); };
-
   this.authorize = function() {
 
     Trello.authorize({
@@ -24,12 +20,16 @@ app.factory('Model', function ($resource) {
         read: 'true',
         write: 'true' },
       expiration: 'never',
-      success: authenticationSuccess,
-      error: authenticationFailure
+      success: function() {
+        console.log('Successful authentication');
+        loggedIn = true;
+      },
+      error: function() { console.log('Failed authentication'); }
     });
 
     //loadBoards();
   };
+
   //TODO: Assign "boards" variable by callback function
   var loadBoards = function (cb) {
 
@@ -47,6 +47,22 @@ app.factory('Model', function ($resource) {
 
   };
 
+  var loadAllCards = function(){
+
+    // Get all of the information about the boards you have access to
+    var success = function(data) {
+      cards = data;
+      cb(cards);
+      cardsLoaded = true;
+      //console.log(data);
+    };
+    var error = function(errorMsg) {
+      console.log(errorMsg);
+    };
+    Trello.get('/member/me/cards', success, error);
+
+  };
+
   this.getBoards = function (cb) {
     //Check if boards are not loaded
     if(!boardsLoaded){
@@ -56,9 +72,11 @@ app.factory('Model', function ($resource) {
     }
   };
 
+
   this.getCards = function (boardId, cb) {
-    
-  }
+
+  };
+
   this.isLoggedIn = function () {
     return loggedIn;
   };

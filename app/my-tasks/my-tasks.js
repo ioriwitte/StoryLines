@@ -12,6 +12,7 @@ angular.module('myApp.myTasks', [])
     //TODO: Wait for data to load in model
     Model.getBoards(function (data) {
       $scope.boards = data;
-    })
+    });
+
 
   });
