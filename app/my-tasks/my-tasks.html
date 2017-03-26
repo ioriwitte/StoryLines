@@ -6,6 +6,9 @@
   <div class="project-title" ng-repeat="board in boards">
     <h1 class="title">{{board.name}}</h1>
     <hr>
+    <div class="card" ng-repeat="card in cards(board.id)">
+      <h5 class="title is-5">{{card.name}}</h5>
+    </div>
   </div>
 
 

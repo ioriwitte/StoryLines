@@ -21,8 +21,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
       controller: "LoginController"
     })
     .when("/myTasks", {
-      templateUrl: "my-tasks/my-tasks.html"
-    /*  controller: "MyTasksController"*/
+      templateUrl: "my-tasks/my-tasks.html",
+      /*controller: "MyTasksController"*/
     })
     .when("/plannerHub", {
       templateUrl: "planner-hub/planner-hub.html",
