@@ -33,3 +33,9 @@
     margin-bottom: 10px;
     /*bottom: 50px;*/
 }
+.fa-user-circle {
+  color: #00d1b2;
+}
+.button {
+  border-radius: 0px;
+}
