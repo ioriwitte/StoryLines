@@ -9,10 +9,7 @@ angular.module('myApp', [
   'myApp.plannerHub',
   'myApp.projectPage',
   'myApp.storiesStatus',
-  'myApp.userScreen',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  'myApp.userScreen'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -42,5 +39,5 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
       templateUrl: "user-screen/user-screen.html",
       controller: "UserScreenController"
     })
-    .otherwise({redirectTo: '/view1'});
+    .otherwise({redirectTo: '/login'});
 }]);
