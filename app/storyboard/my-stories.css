@@ -1,0 +1,14 @@
+.project{
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.title  {
+    margin-bottom: 0px !important;
+}
+hr {
+    margin-top: 10px;
+}
+.card {
+    border-radius: 20px;
+    margin-left: 10px;
+}
